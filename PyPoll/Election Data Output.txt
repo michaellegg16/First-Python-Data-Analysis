@@ -1,0 +1,9 @@
+ELECTION DATA ANALYSIS
+--------------------------
+Total Votes: 3521001
+Candidates: ['Li', 'Khan', 'Correy', "O'Tooley"]
+Li: 14.0% with 492940 votes.
+Khan: 63.0% with 2218231 votes.
+Correy: 20.0% with 704200 votes.
+O'Tooley: 3.0% with 105630 votes.
+THE WINNER IS: Khan
