@@ -1,7 +1,6 @@
-# In this challenge, you are tasked with creating a Python script for analyzing the financial records of your company. 
-# You will give a set of financial data called budget_data.csv. 
-# The dataset is composed of two columns: Date and Profit/Losses. 
-# (Thankfully, your company has rather lax standards for accounting so the records are simple.)
+# In this challenge, you are tasked with creating a Python script for analyzing the financial records of your company
+# You will give a set of financial data called budget_data.csv
+# The dataset is composed of two columns: Date and Profit/Losses
 
 # Your task is to create a Python script that analyzes the records to calculate each of the following:
 
@@ -10,10 +9,11 @@
 # The average of the changes in "Profit/Losses" over the entire period
 # The greatest increase in profits (date and amount) over the entire period
 # The greatest decrease in losses (date and amount) over the entire period
-# In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+# In addition, your final script should both print the analysis to the terminal and export a text file with the results
 
 #First import the os module to allow us to create file paths across operating systems
 import os
+
 #Import the module for reading CSV files
 import csv
 
@@ -28,13 +28,16 @@ Profit_Change = 0
 Date_List = []
 
 # Create relative path to access csv file
+
 csvpath = os.path.join("Resources", "budget_data.csv")
 
 # Open csv file and specify delimiter and a variable to hold contents
 # Read the header first row
+
 with open(csvpath, newline = '') as csvfile:
 
     csvreader = csv.reader(csvfile, delimiter = ',')  
+
     csv_header = next(csvreader)
 
 # Iterate through the rows of data in order to:
@@ -76,7 +79,7 @@ with open(csvpath, newline = '') as csvfile:
 
 
 # Print the data to terminal and calculate the average monthly change.
-# NOTE: All values are the same as example data except for average monthly change! Cannot seem to find out why. 
+# NOTE: All values are the same as example data except for average monthly change.
 # Might have something to do with negative values of the way I am calculating then summing monthly change.
     print("FINANCIAL ANALYSIS")
     print("------------------------")
