@@ -37,8 +37,11 @@ with open(csvpath, newline = '') as csvfile:
         FirstNameList.append(FullNameList[0])
         LastNameList.append(FullNameList[1])
 
-        #Convert DOB to MM/DD/YYYY format
+        #Append dates to initial list
         DOBList.append(row[2])
+
+        #Append SSN to initial list
+        SSNList.append(row[3])
 
     #DATE CONVERSION
     import datetime
@@ -51,4 +54,12 @@ with open(csvpath, newline = '') as csvfile:
         NewDate = datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%m/%d/%Y")
         ConvDateList.append(NewDate)
 
-    print(ConvDateList)
+    #Create an empty list for the hidden SSN
+    HiddenSSNList = []
+
+    #Loop through the SSNList and hide the first 5 characters
+    for ssn in SSNList:
+        HiddenSSN = "***-**-" + str(ssn[7:11])
+        HiddenSSNList.append(HiddenSSN)
+
+    print(HiddenSSNList)
