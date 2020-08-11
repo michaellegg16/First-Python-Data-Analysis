@@ -7,6 +7,61 @@ import csv
 #Import Pandas
 import pandas as pd 
 
+    #STATES
+    #Copy/paste state dictionary from online
+us_state_abbrev = {
+    'Alabama': 'AL',
+    'Alaska': 'AK',
+    'Arizona': 'AZ',
+    'Arkansas': 'AR',
+    'California': 'CA',
+    'Colorado': 'CO',
+    'Connecticut': 'CT',
+    'Delaware': 'DE',
+    'Florida': 'FL',
+    'Georgia': 'GA',
+    'Hawaii': 'HI',
+    'Idaho': 'ID',
+    'Illinois': 'IL',
+    'Indiana': 'IN',
+    'Iowa': 'IA',
+    'Kansas': 'KS',
+    'Kentucky': 'KY',
+    'Louisiana': 'LA',
+    'Maine': 'ME',
+    'Maryland': 'MD',
+    'Massachusetts': 'MA',
+    'Michigan': 'MI',
+    'Minnesota': 'MN',
+    'Mississippi': 'MS',
+    'Missouri': 'MO',
+    'Montana': 'MT',
+    'Nebraska': 'NE',
+    'Nevada': 'NV',
+    'New Hampshire': 'NH',
+    'New Jersey': 'NJ',
+    'New Mexico': 'NM',
+    'New York': 'NY',
+    'North Carolina': 'NC',
+    'North Dakota': 'ND',
+    'Ohio': 'OH',
+    'Oklahoma': 'OK',
+    'Oregon': 'OR',
+    'Pennsylvania': 'PA',
+    'Rhode Island': 'RI',
+    'South Carolina': 'SC',
+    'South Dakota': 'SD',
+    'Tennessee': 'TN',
+    'Texas': 'TX',
+    'Utah': 'UT',
+    'Vermont': 'VT',
+    'Virginia': 'VA',
+    'Washington': 'WA',
+    'West Virginia': 'WV',
+    'Wisconsin': 'WI',
+    'Wyoming': 'WY',
+}
+
 EmpIDList = []
 FirstNameList = []
 LastNameList =[]
@@ -43,6 +98,12 @@ with open(csvpath, newline = '') as csvfile:
         #Append SSN to initial list
         SSNList.append(row[3])
 
+        #Grab the state abbreviation from the dictionary and store it in a variable
+        StateAbbr = us_state_abbrev[row[4]]
+
+        #Store the abbreviated values in the list
+        StateList.append(StateAbbr)
+
     #DATE CONVERSION
     import datetime
 
@@ -62,4 +123,5 @@ with open(csvpath, newline = '') as csvfile:
         HiddenSSN = "***-**-" + str(ssn[7:11])
         HiddenSSNList.append(HiddenSSN)
 
-    print(HiddenSSNList)
+
+    #print(StateList)
