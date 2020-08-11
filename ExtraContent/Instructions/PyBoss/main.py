@@ -14,7 +14,7 @@ DOBList = []
 SSNList = []
 StateList = []
 
-csvpath = os.path.join("Instructions", "PyBoss", "employee_data.csv")
+csvpath = os.path.join("ExtraContent", "Instructions", "PyBoss", "employee_data.csv")
 
 with open(csvpath, newline = '') as csvfile:
     
@@ -37,4 +37,18 @@ with open(csvpath, newline = '') as csvfile:
         FirstNameList.append(FullNameList[0])
         LastNameList.append(FullNameList[1])
 
-    print(LastNameList)
+        #Convert DOB to MM/DD/YYYY format
+        DOBList.append(row[2])
+
+    #DATE CONVERSION
+    import datetime
+
+    #Create an empty list for the convert date values
+    ConvDateList = []
+
+    #Loop through the DOBList and format the date as desired
+    for date in DOBList:
+        NewDate = datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%m/%d/%Y")
+        ConvDateList.append(NewDate)
+
+    print(ConvDateList)
