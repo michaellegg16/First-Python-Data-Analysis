@@ -27,9 +27,9 @@ Monthly_Change_List = []
 Profit_Change = 0
 Date_List = []
 
-# Create relative path to access csv file
+# Create path to access csv file
 
-csvpath = os.path.join("Resources", "budget_data.csv")
+csvpath = "d:/Rutgers/Homeworks/python-challenge/PyBank/Resources/budget_data.csv"
 
 # Open csv file and specify delimiter and a variable to hold contents
 # Read the header first row
@@ -39,6 +39,10 @@ with open(csvpath, newline = '') as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ',')  
 
     csv_header = next(csvreader)
+
+    previousRow = next(csvreader)
+
+    previousProfit = int(previousRow[1])
 
 # Iterate through the rows of data in order to:
 # Add up the total months
@@ -52,16 +56,17 @@ with open(csvpath, newline = '') as csvfile:
         Total_Months += 1
 
         #Add the value of profit change as in integer to the total net profit variable
-        Total_Net_Profit = Total_Net_Profit + int(row[1])
+        currentProfit = int(row[1])
+        Total_Net_Profit = Total_Net_Profit + currentProfit
 
-        #Set the monthly profit end to the corresponding location in the data and subract the start of the month
-        #Replace the monthly profit start vairable with the manthly start end variable for the next iteration
-        Monthly_Profit_End = int(row[1])
-        Monthly_Change = Monthly_Profit_End - Monthly_Profit_Start
-        Monthly_Profit_Start = Monthly_Profit_End
+        #Subract the previous profit from the current profit
+        Monthly_Change = currentProfit - previousProfit
 
         # Store this value in the empty list
         Monthly_Change_List.append(Monthly_Change)
+
+        #Replace the previous profit vairable with the current profit variable for the next iteration
+        previousProfit = currentProfit
 
         #Add  the profit change up
         Profit_Change += Monthly_Change
@@ -78,30 +83,33 @@ with open(csvpath, newline = '') as csvfile:
         Date_Of_Max_Loss = Date_List[Monthly_Change_List.index(Greatest_Monthly_Loss)]
 
 
+
+
 # Print the data to terminal and calculate the average monthly change.
 # NOTE: All values are the same as example data except for average monthly change.
 # Might have something to do with negative values of the way I am calculating then summing monthly change.
     print("FINANCIAL ANALYSIS")
     print("------------------------")
     print(f'Total Months: {Total_Months}')
-    print(f'Total Net Profit: {Total_Net_Profit}')
-    Average_Monthly_Change = round(Profit_Change/ len(Monthly_Change_List), 0)
-    print(f'Average Monthly Change: {Average_Monthly_Change}')
+    print(f'Total Net Profit: ${Total_Net_Profit:,}')
+    Average_Monthly_Change = round((sum(Monthly_Change_List)) / (Total_Months), 0)
+    print(f'Average Monthly Change: ${Average_Monthly_Change:,}')
     Max_Profit = max (Monthly_Change_List)
     Max_Loss = min(Monthly_Change_List)
-    print(f'Max Monthly Change: {Date_Of_Max_Profit} ({Max_Profit})')
-    print(f'Least Monthly Change: {Date_Of_Max_Loss} ({Max_Loss})')
+    print(f'Max Monthly Change: {Date_Of_Max_Profit} (${Max_Profit:,})')
+    print(f'Least Monthly Change: {Date_Of_Max_Loss} (${Max_Loss:,})')
 
+writePath = "d:\Rutgers\Homeworks\python-challenge\PyBank\Financial_Analysis_Output.txt"
 
 # Write this data to a text file named Financial Analysis Output
-with open('Financial Analysis Output.txt', 'w', newline = '') as text:
+with open(writePath, 'w', newline = '') as text:
     text.write(f'FINANCIAL ANALYSIS\n')
     text.write(f'------------------------\n')
     text.write(f'Total Months: {Total_Months}\n')
-    text.write(f'Total Net Profit: {Total_Net_Profit}\n')
-    Average_Monthly_Change = round(sum(Monthly_Change_List)/ len(Monthly_Change_List), 0)
-    text.write(f'Average Monthly Change: {Average_Monthly_Change}\n')
+    text.write(f'Total Net Profit: ${Total_Net_Profit:,}\n')
+    Average_Monthly_Change = round(sum(Monthly_Change_List)/ Total_Months, 0)
+    text.write(f'Average Monthly Change: ${Average_Monthly_Change:,}\n')
     Max_Profit = max (Monthly_Change_List)
     Max_Loss = min(Monthly_Change_List)
-    text.write(f'Max Monthly Profit: {Date_Of_Max_Profit} ({Max_Profit})\n')
-    text.write(f'Max Monthly Loss: {Date_Of_Max_Loss} ({Max_Loss})\n')
+    text.write(f'Max Monthly Profit: {Date_Of_Max_Profit} (${Max_Profit:,})\n')
+    text.write(f'Max Monthly Loss: {Date_Of_Max_Loss} (${Max_Loss:,})\n')
