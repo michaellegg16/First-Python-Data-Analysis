@@ -18,11 +18,11 @@
 ![PyBank](https://github.com/michaellegg16/python-challenge/blob/master/Screenshots/FinacialResultsScreenshot.png)
 
 * PyPoll:
- * Analyze polling dating from the "election_data.csv" file to calculate the following:
- * The total number of votes cast.
- * A complete list of candidates who received votes.
- * The percentage of votes each candidate won.
- * The winner of the election based on popular vote.
+  * Analyze polling dating from the "election_data.csv" file to calculate the following:
+  * The total number of votes cast.
+  * A complete list of candidates who received votes.
+  * The percentage of votes each candidate won.
+  * The winner of the election based on popular vote.
  
 * Output of Results:
 
