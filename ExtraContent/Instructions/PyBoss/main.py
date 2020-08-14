@@ -69,7 +69,7 @@ DOBList = []
 SSNList = []
 StateList = []
 
-csvpath = os.path.join("ExtraContent", "Instructions", "PyBoss", "employee_data.csv")
+csvpath = "D:\Rutgers\Homeworks\python-challenge\ExtraContent\Instructions\PyBoss\employee_data.csv"
 
 with open(csvpath, newline = '') as csvfile:
     
@@ -124,4 +124,4 @@ with open(csvpath, newline = '') as csvfile:
         HiddenSSNList.append(HiddenSSN)
 
 
-    #print(StateList)
+    print(HiddenSSNList)

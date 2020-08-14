@@ -25,7 +25,7 @@ Count_Of_Votes = []
 Vote_Percentages = []
 
 # Create a relative path to access the csv file
-csvpath = os.path.join('Resources', 'election_data.csv')
+csvpath = "D:\Rutgers\Homeworks\python-challenge\PyPoll\Resources\election_data.csv"
 
 # Open the csv file and specify the delimiter and a variable to hold its contents
 # Read the header first row
